@@ -9,8 +9,8 @@ for account, role in credentials.accounts.items():
     assume_role = make_session(role)
     switch_role_sess = switch_session(assume_role)
 
-    response = switch_role_sess.client(service_name='rds', region_name='us-east-1')
-    db_instances = response.describe_db_instances()['DBInstances']
+    rds_client = switch_role_sess.client(service_name='rds', region_name='us-east-1')
+    db_instances = rds_client.describe_db_instances()['DBInstances']
     
     if len(db_instances) > 0:
         print(f'\t{len(db_instances)} intance(s).')
