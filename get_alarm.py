@@ -15,8 +15,12 @@ for account, role in credentials.accounts.items():
     cnt = 0
     for alarms in response_iterator:
         for alarm in alarms['MetricAlarms']:
-            if alarm['StateValue'] == 'ALARM':
+            # if alarm['StateValue'] == 'INSUFFICIENT_DATA':
+            # if alarm['StateValue'] == 'ALARM':
+            if len(alarm['AlarmActions']) == 0: # to find alarms with no action
                 if 'CPU-ASG-' not in alarm['AlarmName']:
                     cnt += 1
-                    print('\t', str(cnt), alarm['AlarmName'], alarm['StateValue'], alarm['MetricName'])
+                    
+                    print('\t', str(cnt), alarm['AlarmName'], alarm['StateValue'], alarm['MetricName'], \
+                        alarm['Dimensions'][0]['Value'])
     
