@@ -17,6 +17,6 @@ for account, role in credentials.accounts.items():
         for item in items['events']:
             if item['statusCode'] == 'upcoming': # 'open'|'closed'|'upcoming'
                 cnt += 1
-                print('\t', str(cnt), item['statusCode'], item['service'], item['eventTypeCode'], \
+                print('\t', str(cnt), item['service'], item['eventTypeCode'], \
                     item['eventTypeCategory'], item['startTime'], item['lastUpdatedTime'])
     
