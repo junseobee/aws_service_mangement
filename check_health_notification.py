@@ -15,7 +15,7 @@ for account, role in credentials.accounts.items():
     cnt = 0
     for items in response_iterator:
         for item in items['events']:
-            if item['statusCode'] != 'closed':
+            if item['statusCode'] == 'upcoming': # 'open'|'closed'|'upcoming'
                 cnt += 1
                 print('\t', str(cnt), item['statusCode'], item['service'], item['eventTypeCode'], \
                     item['eventTypeCategory'], item['startTime'], item['lastUpdatedTime'])
