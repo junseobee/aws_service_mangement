@@ -18,7 +18,7 @@ for account, role in credentials.accounts.items():
     for items in response_iterator:
         for item in items['CertificateSummaryList']:
             if item['InUse']:
-                if item['NotAfter'].date() < (datetime.now() + timedelta(days=30)).date()w:
+                if item['NotAfter'].date() < (datetime.now() + timedelta(days=30)).date():
                     # print(item)
                     # print(str(item['InUse']))
                     print('\t', str(cnt), item['DomainName'], item['Status'], item['Type'], \
